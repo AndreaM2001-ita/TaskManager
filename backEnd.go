@@ -145,7 +145,7 @@ func updateTask(w http.ResponseWriter, r *http.Request, customID string) {
 		},
 	}
 
-	//udpate
+	//update
 	_, err := taskCollection.UpdateOne(
 		context.Background(),
 		bson.M{"customId": customID},
@@ -168,34 +168,36 @@ func handleTasks(w http.ResponseWriter, r *http.Request) {
 	customID, hasCustomID := vars["customId"]
 
 	switch r.Method {
-	case http.MethodPost:
+	case http.MethodPost: //POST
 		uploadNewTask(w, r)
-	case http.MethodGet:
+	case http.MethodGet: //GET
 		getAllTasks(w)
-	case http.MethodDelete:
+	case http.MethodDelete: //DELETE
 		if hasCustomID {
 			deleteTask(w, customID)
 		} else {
 			http.Error(w, "Missing custom ID for delete", http.StatusBadRequest)
 		}
-	case http.MethodPut:
+	case http.MethodPut: //UPDATE
 		if hasCustomID {
 			updateTask(w, r, customID)
 		} else {
 			http.Error(w, "Missing custom ID for update", http.StatusBadRequest)
 		}
-	default:
+	default: //NOT FOUND
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }
 func main() {
 	initMongoDB()
-	defer func() { // defer calls this fucntion once  main is concluded, so that connection with DB is alwys elegantly closed
+	defer func() { // defer calls this fucntion once  main is concluded,
+		// so that connection with DB is alwys elegantly closed
 		if err := client.Disconnect(context.Background()); err != nil {
 			log.Printf("MongoDB disconnect error: %v", err)
 		}
 	}()
 
+	//Routing of restful API CRUD operations
 	router := mux.NewRouter()
 	router.HandleFunc("/api/tasks", handleTasks).Methods("GET", "POST")
 	router.HandleFunc("/api/tasks/{customId}", handleTasks).Methods("PUT", "DELETE")

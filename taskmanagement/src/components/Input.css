@@ -1,0 +1,28 @@
+/* Input Styles */
+.input-field {
+    padding: 12px 16px; /* Add padding for better spacing */
+    border: 2px solid #e0e0e0; /* Soft border color */
+    border-radius: 8px; /* Smooth, rounded corners */
+    font-size: 1.125rem; /* Slightly larger font */
+    outline: none;
+    transition: all 0.3s ease-in-out; /* Smooth transitions */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+  }
+  
+  /* Focused state */
+  .input-field:focus {
+    border-color: #007bff; /* Change border color to blue */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Elevate shadow on focus */
+  }
+  
+  /* Placeholder Styling */
+  .input-field::placeholder {
+    color: #888; /* Subtle color for placeholder */
+    font-style: italic; /* Italicize placeholder text */
+  }
+  
+  /* Hover state */
+  .input-field:hover {
+    border-color: #007bff; /* Highlight border on hover */
+  }
+  

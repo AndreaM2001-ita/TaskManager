@@ -1,0 +1,23 @@
+/* Card Styles */
+.card {
+    background-color: #ffffff; /* White background */
+    padding: 24px; /* Spacious padding */
+    border-radius: 12px; /* Smooth rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    margin-bottom: 20px;
+  }
+  
+  /* Hover effect */
+  .card:hover {
+    transform: translateY(-5px); /* Slightly lift the card */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .card {
+      padding: 16px; /* Reduce padding on smaller screens */
+    }
+  }
+  
